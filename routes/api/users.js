@@ -87,14 +87,14 @@ router.post('/',checkSchema({
         jwt.sign(
             payload,
             config.get('jwtSecret'),
-            {expiresIn: 3600}, (err, token)=>{
+            {expiresIn: 3600000}, (err, token)=>{
                 if(err) throw err;
                 res.json({token})
             }
         );
     }catch(err){
         console.error(err.message);
-        res.status(500).send('Server erros');
+        res.status(500).send('Server error');
     }
 });
 
